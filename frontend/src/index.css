@@ -799,6 +799,40 @@ tr:hover td {
   font-weight: bold;
 }
 
+.json-preview {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 12px;
+  line-height: 1.6;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.plan-page {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  margin-bottom: 12px;
+  background: var(--bg);
+}
+
+.plan-page-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.plan-page-body {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
 /* Kanban Status Dots */
 .status-dot {
   width: 8px;

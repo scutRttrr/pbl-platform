@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PBL 教案生成系统</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #f7f8fa;
+      color: #1f2328;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .panel {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 16px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      resize: vertical;
+      padding: 12px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    input[type="number"] {
+      width: 100px;
+      padding: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: #1677ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    button:hover {
+      background: #0958d9;
+    }
+
+    .page {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 12px;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .page-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .page-body {
+      white-space: pre-wrap;
+      line-height: 1.7;
+      background: #fafafa;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .status {
+      margin-top: 12px;
+      color: #555;
+    }
+
+    .error {
+      color: #d4380d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="panel">
+      <h1>PBL 教学教案生成系统</h1>
+      <p>根据课程描述生成多页 PBL 教案，每页可单独查看和重生成。</p>
+
+      <label for="description">课程描述</label>
+      <textarea id="description">基于真实特殊教育场景，生成跨学科 PBL 教学教案，强调问题驱动、角色分工、阶段性产出物和反思。</textarea>
+
+      <div style="margin-top: 12px;">
+        <label for="totalPages">页数：</label>
+        <input id="totalPages" type="number" min="1" max="20" value="3" />
+        <button id="generateBtn" type="button">生成教案</button>
+      </div>
+
+      <div id="status" class="status"></div>
+    </div>
+
+    <div id="pages"></div>
+  </div>
+
+  <script src="/static/front.js"></script>
+</body>
+</html>
