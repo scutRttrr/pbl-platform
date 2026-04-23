@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 export default function PlanGenerator() {
   const [form, setForm] = useState({
@@ -11,13 +11,6 @@ export default function PlanGenerator() {
   const [generating, setGenerating] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
-
-  const formattedResult = useMemo(() => {
-    if (!result) {
-      return '';
-    }
-    return JSON.stringify(result, null, 2);
-  }, [result]);
 
   const handleGenerate = async () => {
     const trimmedDescription = form.description.trim();
@@ -69,15 +62,11 @@ export default function PlanGenerator() {
     <div className="fade-in">
       <div className="page-header">
         <div className="page-title">🤖 教学方案生成</div>
-        <div className="page-subtitle">调用后端教案生成接口，并在右侧展示返回 JSON 与分页内容</div>
+        <div className="page-subtitle">调用后端教案生成接口，并在右侧展示分页结果</div>
       </div>
 
-      <div className="grid-2">
-        <div className="card">
-          <div className="card-header">
-            <div className="card-title">📝 生成参数（与后端接口一致）</div>
-          </div>
-
+      <div className="grid-2 plan-generator-layout">
+        <div className="card plan-generator-left-pane">
           <div className="form-group">
             <label className="form-label">description</label>
             <textarea
@@ -134,7 +123,7 @@ export default function PlanGenerator() {
           </button>
         </div>
 
-        <div>
+        <div className="plan-generator-right-pane">
           {generating && (
             <div className="card" style={{ marginBottom: 20 }}>
               <div className="generating">
@@ -142,9 +131,9 @@ export default function PlanGenerator() {
                   <span /><span /><span />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 600, fontSize: 14 }}>正在调用 /api/generate ...</div>
+                  <div style={{ fontWeight: 600, fontSize: 14 }}>教案生成中，请耐心等待</div>
                   <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 4 }}>
-                    请求参数：description、total_pages、reference_mode、reference_text
+                    系统正在整理教学目标与活动流程，请稍候查看生成结果。
                   </div>
                 </div>
               </div>
@@ -162,13 +151,6 @@ export default function PlanGenerator() {
 
           {result && (
             <div className="fade-in">
-              <div className="card" style={{ marginBottom: 16 }}>
-                <div className="card-header">
-                  <div className="card-title">🧾 后端返回 JSON</div>
-                </div>
-                <pre className="json-preview">{formattedResult}</pre>
-              </div>
-
               <div className="card">
                 <div className="card-header">
                   <div className="card-title">📄 教案分页结果</div>
@@ -192,10 +174,10 @@ export default function PlanGenerator() {
             <div className="card">
               <div className="empty-state">
                 <div className="empty-state-icon">🤖</div>
-                <p style={{ fontWeight: 600, marginBottom: 8 }}>后端接口联调</p>
+                <p style={{ fontWeight: 600, marginBottom: 8 }}>教案待生成</p>
                 <p style={{ fontSize: 14 }}>
-                  填写左侧 API 参数后点击“生成教案”<br />
-                  右侧将展示后端返回的 JSON 和分页内容
+                  请先在左侧填写本节课教学需求<br />
+                  点击“生成教案”后，右侧将展示分页教案内容
                 </p>
               </div>
             </div>

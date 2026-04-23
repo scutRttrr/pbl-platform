@@ -810,6 +810,8 @@ tr:hover td {
   line-height: 1.6;
   max-height: 320px;
   overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .plan-page {
@@ -831,6 +833,29 @@ tr:hover td {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+.plan-generator-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.plan-generator-layout > * {
+  min-width: 0;
+}
+
+.plan-generator-left-pane,
+.plan-generator-right-pane {
+  height: clamp(560px, 72vh, 860px);
+}
+
+.plan-generator-left-pane {
+  overflow-y: auto;
+}
+
+.plan-generator-right-pane {
+  overflow-y: auto;
+  padding-right: 2px;
 }
 
 /* Kanban Status Dots */
